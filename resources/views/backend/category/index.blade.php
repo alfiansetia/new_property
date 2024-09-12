@@ -32,7 +32,7 @@
                                         <td>{{ $item->name }}</td>
                                         <td>
                                             <div class="btn-group">
-                                                <a href="{{ route('backend.categories.edit', $item->id) }}" type="button"
+                                                <a href="{{ route('backend.categories.edit', $item->id) }}"
                                                     class="btn btn-sm  btn-info">Edit</a>
                                                 <form method="POST"
                                                     action="{{ route('backend.categories.destroy', $item->id) }}">

@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Category;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -17,6 +18,7 @@ class AppServiceProvider extends ServiceProvider
             ],
             function ($view) {
                 $view->with('user', auth()->user());
+                $view->with('categories', Category::withCount('properties')->get());
             }
         );
     }

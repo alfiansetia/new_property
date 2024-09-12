@@ -19,7 +19,6 @@
                                 <th style="width: 30px" class="text-center">No</th>
                                 <th>Article</th>
                                 <th>User</th>
-                                <th>Property</th>
                                 <th>Comment</th>
                                 <th style="width: 30px" class="text-center">Action</th>
                             </thead>
@@ -29,10 +28,11 @@
                                         <td>{{ $key + 1 }}</td>
                                         <td>{{ $item->article->title }}</td>
                                         <td>{{ $item->user->name }}</td>
-                                        <td>{{ $item->property->name }}</td>
                                         <td>{{ $item->comment }}</td>
                                         <td>
                                             <div class="btn-group">
+                                                <a href="{{ route('frontend.article_detail', $item->article->slug) }}"
+                                                    class="btn btn-sm btn-secondary" target="_blank">View</a>
                                                 <form method="POST"
                                                     action="{{ route('backend.comments.destroy', $item->id) }}">
                                                     @csrf

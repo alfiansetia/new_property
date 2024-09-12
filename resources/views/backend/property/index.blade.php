@@ -36,11 +36,13 @@
                                         <td>{{ $item->name }}</td>
                                         <td>{{ $item->category->name }}</td>
                                         <td>{{ $item->city }}</td>
-                                        <td>{{ $item->price }}</td>
+                                        <td>{{ hrg($item->price) }}</td>
                                         <td>{{ $item->status }}</td>
                                         <td>
                                             <div class="btn-group">
-                                                <a href="{{ route('backend.properties.edit', $item->id) }}" type="button"
+                                                <a href="{{ route('frontend.property', $item->slug) }}"
+                                                    class="btn btn-sm btn-secondary" target="_blank">View</a>
+                                                <a href="{{ route('backend.properties.edit', $item->id) }}"
                                                     class="btn btn-sm  btn-info">Edit</a>
                                                 <form method="POST"
                                                     action="{{ route('backend.properties.destroy', $item->id) }}">

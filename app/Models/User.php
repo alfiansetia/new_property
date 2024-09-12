@@ -50,6 +50,15 @@ class User extends Authenticatable
         ];
     }
 
+    public function getAvatarAttribute($value)
+    {
+        if ($value && file_exists(public_path('uploads/images/' . $value))) {
+            return asset('uploads/images/' . $value);
+        } else {
+            return asset('frontend/img/team-4.jpg');
+        }
+    }
+
     public function properties()
     {
         return $this->hasMany(Property::class);

@@ -32,7 +32,9 @@
                                         <td>{{ $item->title }}</td>
                                         <td>
                                             <div class="btn-group">
-                                                <a href="{{ route('backend.articles.edit', $item->id) }}" type="button"
+                                                <a href="{{ route('frontend.article_detail', $item->slug) }}"
+                                                    class="btn btn-sm btn-secondary" target="_blank">View</a>
+                                                <a href="{{ route('backend.articles.edit', $item->id) }}"
                                                     class="btn btn-sm  btn-info">Edit</a>
                                                 <form method="POST"
                                                     action="{{ route('backend.articles.destroy', $item->id) }}">

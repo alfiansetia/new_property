@@ -16,7 +16,7 @@ class Property extends Model
         if ($value && file_exists(public_path('uploads/images/' . $value))) {
             return asset('uploads/images/' . $value);
         } else {
-            return asset('img/default.jpeg');
+            return asset('frontend/img/property-1.jpg');
         }
     }
 
@@ -25,7 +25,7 @@ class Property extends Model
         if ($value && file_exists(public_path('uploads/images/' . $value))) {
             return asset('uploads/images/' . $value);
         } else {
-            return asset('img/default.jpeg');
+            return asset('frontend/img/property-1.jpg');
         }
     }
 
@@ -34,7 +34,7 @@ class Property extends Model
         if ($value && file_exists(public_path('uploads/images/' . $value))) {
             return asset('uploads/images/' . $value);
         } else {
-            return asset('img/default.jpeg');
+            return asset('frontend/img/property-1.jpg');
         }
     }
 

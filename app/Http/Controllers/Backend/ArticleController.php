@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Models\Article;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
 
 class ArticleController extends Controller
@@ -35,10 +36,21 @@ class ArticleController extends Controller
             'title'     => 'required|max:150',
             'content'   => 'required|max:65535',
         ]);
+        $destinationPath = public_path('uploads/images/');
+        if (!file_exists($destinationPath)) {
+            File::makeDirectory($destinationPath, 755, true);
+        }
+        $img = null;
+        if ($files = $request->file('image')) {
+            $img = 'image_' . date('YmdHis') . "." . $files->getClientOriginalExtension();
+            $files->move($destinationPath, $img);
+        }
         Article::create([
+            'user_id'   => auth()->id(),
             'title'     => $request->title,
             'slug'      => Str::slug($request->title),
             'content'   => $request->content,
+            'image'     => $img,
         ]);
         return redirect()->route('backend.articles.index')->with('message', 'Success Add Data!');
     }
@@ -68,10 +80,23 @@ class ArticleController extends Controller
             'title'     => 'required|max:150',
             'content'   => 'required|max:65535',
         ]);
+        $destinationPath = public_path('uploads/images/');
+        if (!file_exists($destinationPath)) {
+            File::makeDirectory($destinationPath, 755, true);
+        }
+        $img = $article->getRawOriginal('image');
+        if ($files = $request->file('image')) {
+            if (!empty($img) && file_exists($destinationPath . $img)) {
+                File::delete($destinationPath . $img);
+            }
+            $img = 'image_' . date('YmdHis') . "." . $files->getClientOriginalExtension();
+            $files->move($destinationPath, $img);
+        }
         $article->update([
             'title'     => $request->title,
             'slug'      => Str::slug($request->title),
             'content'   => $request->content,
+            'image'     => $img,
         ]);
         return redirect()->route('backend.articles.index')->with('message', 'Success Edit Data!');
     }

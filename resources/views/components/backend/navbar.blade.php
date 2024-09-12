@@ -5,11 +5,11 @@
             <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-            <a href="index3.html" class="nav-link">Home</a>
+            <a href="{{ route('frontend.index') }}" class="nav-link">Home</a>
         </li>
-        <li class="nav-item d-none d-sm-inline-block">
+        {{-- <li class="nav-item d-none d-sm-inline-block">
             <a href="#" class="nav-link">Contact</a>
-        </li>
+        </li> --}}
     </ul>
 
     <!-- Right navbar links -->
@@ -17,15 +17,13 @@
         <!-- Navbar Search -->
         <li class="nav-item dropdown user-menu">
             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
-                <img src="{{ asset('backend/dist/img/user2-160x160.jpg') }}" class="user-image img-circle elevation-2"
-                    alt="User Image">
+                <img src="{{ $user->avatar }}" class="user-image img-circle elevation-2" alt="User Image">
                 <span class="d-none d-md-inline">{{ $user->name }}</span>
             </a>
             <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                 <!-- User image -->
                 <li class="user-header bg-primary">
-                    <img src="{{ asset('backend/dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2"
-                        alt="User Image">
+                    <img src="{{ $user->avatar }}" class="img-circle elevation-2" alt="User Image">
                     <p>
                         {{ $user->name }} - {{ $user->role }}
                     </p>
@@ -33,7 +31,7 @@
                 <!-- Menu Footer-->
                 <li class="user-footer">
                     <form action="{{ route('logout') }}" method="POST">
-                        <a href="#" class="btn btn-default btn-flat">Profile</a>
+                        <a href="{{ route('backend.profile.index') }}" class="btn btn-default btn-flat">Profile</a>
                         @csrf
                         <button type="submit" class="btn btn-default btn-flat float-right"
                             onclick="return confirm('Sign Out?')">Sign out</button>

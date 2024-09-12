@@ -13,8 +13,11 @@ class RoleMiddleware
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle(Request $request, Closure $next): Response
+    public function handle(Request $request, Closure $next, $role): Response
     {
+        if (auth()->user()->role != $role) {
+            return redirect()->route('home')->with('message', 'Unauthorize!');
+        }
         return $next($request);
     }
 }

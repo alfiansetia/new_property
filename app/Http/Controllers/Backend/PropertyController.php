@@ -18,7 +18,12 @@ class PropertyController extends Controller
      */
     public function index()
     {
-        $properties = Property::all();
+        $user = auth()->user();
+        $query = Property::query();
+        if ($user->role != 'admin') {
+            $query->where('user_id', auth()->id());
+        }
+        $properties = $query->get();
         return view('backend.property.index', compact('properties'));
     }
 
@@ -105,6 +110,10 @@ class PropertyController extends Controller
      */
     public function edit(Property $property)
     {
+        $user = auth()->user();
+        if ($user->role != 'admin' && $property->user_id != $user->id) {
+            return redirect()->route('backend.properties.index')->with('message', 'Unauthorize Edit this property!');
+        }
         $categories = Category::all();
         $cities = City::all();
         return view('backend.property.edit', compact(['categories', 'property', 'cities']));
@@ -183,6 +192,10 @@ class PropertyController extends Controller
      */
     public function destroy(Property $property)
     {
+        $user = auth()->user();
+        if ($user->role != 'admin' && $property->user_id != $user->id) {
+            return redirect()->route('backend.properties.index')->with('message', 'Unauthorize Delete this property!');
+        }
         $property->delete();
         return redirect()->route('backend.properties.index')->with('message', 'Success Delete Data!');
     }

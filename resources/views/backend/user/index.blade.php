@@ -35,7 +35,7 @@
                                         <td>{{ $item->role }}</td>
                                         <td>
                                             <div class="btn-group">
-                                                <a href="{{ route('backend.users.edit', $item->id) }}" type="button"
+                                                <a href="{{ route('backend.users.edit', $item->id) }}"
                                                     class="btn btn-sm  btn-info">Edit</a>
                                                 <form method="POST"
                                                     action="{{ route('backend.users.destroy', $item->id) }}">

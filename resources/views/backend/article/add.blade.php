@@ -33,6 +33,26 @@
                             <div class="row">
                                 <div class="col-sm-12">
                                     <div class="form-group">
+                                        <label for="image">Image</label>
+                                        <div class="input-group">
+                                            <div class="custom-file">
+                                                <input type="file" name="image"
+                                                    class="custom-file-input @error('image') is-invalid @enderror"
+                                                    id="image" accept="image/jpeg, image/png, image/jpg">
+                                                <label class="custom-file-label" for="image">Choose file</label>
+                                            </div>
+                                        </div>
+                                        @error('image')
+                                            <div class="alert alert-danger mt-2">
+                                                {{ $message }}
+                                            </div>
+                                        @enderror
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
                                         <label for="content">Content</label>
                                         <textarea name="content" id="content" class="form-control summernote @error('content') is-invalid @enderror"
                                             rows="3" placeholder="Enter Content">{!! old('content') !!}</textarea>
@@ -59,10 +79,15 @@
 @endsection
 
 @push('js')
+    <!-- bs-custom-file-input -->
+    <script src="{{ asset('backend/plugins/bs-custom-file-input/bs-custom-file-input.min.js') }}"></script>
+
     <!-- Summernote -->
     <script src="{{ asset('backend/plugins/summernote/summernote-bs4.min.js') }}"></script>
     <script>
         $(document).ready(function() {
+
+            bsCustomFileInput.init();
 
             $('.summernote').summernote({
                 height: 300,
