@@ -1,4 +1,4 @@
-@extends('layouts.backend', ['title' => 'Edit City'])
+@extends('layouts.backend', ['title' => 'Data City'])
 
 @push('css')
 @endpush

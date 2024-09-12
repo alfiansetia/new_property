@@ -1,4 +1,4 @@
-@extends('layouts.backend', ['title' => 'Add Article'])
+@extends('layouts.backend', ['title' => 'Data Article'])
 
 @push('css')
     <link rel="stylesheet" href="{{ asset('backend/plugins/summernote/summernote-bs4.min.css') }}">

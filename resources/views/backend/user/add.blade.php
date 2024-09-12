@@ -1,4 +1,4 @@
-@extends('layouts.backend', ['title' => 'Add User'])
+@extends('layouts.backend', ['title' => 'Data User'])
 
 @push('css')
 @endpush

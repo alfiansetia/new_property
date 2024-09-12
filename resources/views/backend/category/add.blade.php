@@ -1,4 +1,4 @@
-@extends('layouts.backend', ['title' => 'Add Category'])
+@extends('layouts.backend', ['title' => 'Data Category'])
 
 @push('css')
 @endpush
