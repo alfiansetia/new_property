@@ -4,7 +4,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>AdminLTE 3 | {{ $title }}</title>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <title>{{ env('APP_NAME') }} | {{ $title }}</title>
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
