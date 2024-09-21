@@ -7,8 +7,7 @@
                 <div class="col-lg-6">
                     <div class="text-start mx-auto mb-5 wow slideInLeft" data-wow-delay="0.1s">
                         <h1 class="mb-3">Property {{ $category->name }}</h1>
-                        <p>Eirmod sed ipsum dolor sit rebum labore magna erat. Tempor ut dolore lorem kasd vero
-                            ipsum sit eirmod sit diam justo sed rebum.</p>
+                        <p>Pilih property {{ $category->name }} sesuai kebutuhan anda.</p>
                     </div>
                 </div>
                 <div class="col-lg-6 text-start text-lg-end wow slideInRight" data-wow-delay="0.1s">
