@@ -29,7 +29,7 @@
                                 <div class="property-item rounded overflow-hidden">
                                     <div class="position-relative overflow-hidden">
                                         <a href="{{ route('frontend.property', $item->slug) }}"><img class="img-fluid"
-                                                src="{{ asset('frontend/img/property-1.jpg') }}" alt=""></a>
+                                                src="{{ asset('frontend/img/' . $item->image1) }}" alt=""></a>
                                         <div
                                             class="bg-primary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">
                                             {{ $item->status }}</div>
@@ -71,7 +71,7 @@
                                 <div class="property-item rounded overflow-hidden">
                                     <div class="position-relative overflow-hidden">
                                         <a href="{{ route('frontend.property', $item->slug) }}"><img class="img-fluid"
-                                                src="{{ asset('frontend/img/property-1.jpg') }}" alt=""></a>
+                                                src="{{ asset('frontend/img/ . $item->image1') }}" alt=""></a>
                                         <div
                                             class="bg-danger rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">
                                             {{ $item->status }}</div>
